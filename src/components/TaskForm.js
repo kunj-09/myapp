@@ -21,24 +21,18 @@ const TaskForm = () => {
     e.preventDefault();
   
     try {
-      // Collect user input from form fields
-      const updatedFormData = {
+      const newTaskData = {
         title: formData.title,
         description: formData.description,
-        status: 'open', // Default status or based on form input
-        type: formData.type, // Assuming 'type' is from a form input
-        assignedTo: formData.assignedTo // Assuming 'assignedTo' is from a form input
+        type: formData.type,
+        assignedTo: formData.assignedTo,
+        status: 'open' // Assuming status is default or set based on form input
       };
   
-      await setFormData(updatedFormData); // Update formData state with user inputs
-  
       // Send POST request to create task
-      const response = await axios.post('http://localhost:5000/api/tasks', updatedFormData);
-      console.log('Response:', response.data); // Log response data for debugging
-  
-      alert('Task created successfully!');
+      const response = await axios.post('http://localhost:5000/api/tasks', newTaskData);
       
-      // Optionally reset form fields after successful creation
+      // Update local state with new task data and reset form fields
       setFormData({
         title: '',
         description: '',
@@ -46,11 +40,17 @@ const TaskForm = () => {
         assignedTo: '',
         status: 'open'
       });
+  
+      // Optionally reload the page to reflect the updated list of tasks
+      window.location.reload();
+  
+      alert('Task created successfully!');
     } catch (error) {
-      console.error('Error creating task:', error.response.data); // Log specific error response
+      console.error('Error creating task:', error.response.data);
       alert('Failed to create task. Please check the details and try again.');
     }
   };
+  
   
 
   

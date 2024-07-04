@@ -105,7 +105,7 @@ const TaskList = () => {
               <button onClick={() => handleToggleStatus(task._id, task.status)}>
                 {task.status === 'open' ? 'Mark Closed' : 'Mark Open'}
               </button>
-              <button onClick={() => handleDelete(task._id)}>Delete</button>
+              <button  onClick={() => handleDelete(task._id)}>Delete</button>
             </div>
           </li>
         ))}
