@@ -10,7 +10,7 @@ const UpdateTaskPage = () => {
   useEffect(() => {
     const fetchTask = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/tasks/${id}`); // Adjust URL as per your backend
+        const response = await axios.get(`https://taskkapp.onrender.com/api/tasks/${id}`); // Adjust URL as per your backend
         setTask(response.data);
         setFormData(response.data); // Initialize form data with task details
       } catch (error) {
@@ -31,7 +31,7 @@ const UpdateTaskPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/tasks/${id}`, formData); // Adjust URL as per your backend
+      await axios.put(`https://taskkapp.onrender.com/api/tasks/${id}`, formData); // Adjust URL as per your backend
       alert('Task updated successfully!');
       // Optionally, you can redirect or update state here
     } catch (error) {
