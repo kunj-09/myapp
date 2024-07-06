@@ -10,7 +10,7 @@ const TaskList = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get('https://taskkapp.onrender.com/api/tasks'); // Adjust URL as per your backend
+        const response = await axios.get('https://deploy-b6a6.onrender.com/api/tasks'); // Adjust URL as per your backend
         setTasks(response.data);
         applyFilter(response.data, statusFilter); // Apply current filter to newly fetched tasks
       } catch (error) {
@@ -36,7 +36,7 @@ const TaskList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://taskkapp.onrender.com/api/tasks/${id}`); // Adjust URL as per your backend
+      await axios.delete(`https://deploy-b6a6.onrender.com/api/tasks/${id}`); // Adjust URL as per your backend
       const updatedTasks = tasks.filter(task => task._id !== id);
       setTasks(updatedTasks);
       applyFilter(updatedTasks, statusFilter); // Update filtered tasks after deletion
@@ -50,7 +50,7 @@ const TaskList = () => {
     const newStatus = currentStatus === 'open' ? 'closed' : 'open';
 
     try {
-      await axios.put(`https://taskkapp.onrender.com/api/tasks/${id}`, { status: newStatus }); // Adjust URL as per your backend
+      await axios.put(`https://deploy-b6a6.onrender.com/api/tasks/${id}`, { status: newStatus }); // Adjust URL as per your backend
       const updatedTasks = tasks.map(task =>
         task._id === id ? { ...task, status: newStatus } : task
       );
@@ -65,7 +65,7 @@ const TaskList = () => {
   // Function to fetch tasks again and update state after adding a new task
   const fetchTasksAndUpdateState = async () => {
     try {
-      const response = await axios.get('https://taskkapp.onrender.com/api/tasks'); // Adjust URL as per your backend
+      const response = await axios.get('https://deploy-b6a6.onrender.com/api/tasks'); // Adjust URL as per your backend
       setTasks(response.data);
       applyFilter(response.data, statusFilter); // Apply current filter to newly fetched tasks
     } catch (error) {
