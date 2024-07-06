@@ -31,7 +31,7 @@ const UpdateTaskPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`https://deploy-b6a6.onrender.com/tasks/${id}`, formData); // Adjust URL as per your backend
+      await axios.put(`https://deploy-b6a6.onrender.com/api/tasks/${id}`, formData); // Adjust URL as per your backend
       alert('Task updated successfully!');
       // Optionally, you can redirect or update state here
     } catch (error) {
